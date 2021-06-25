@@ -87,6 +87,7 @@ int Buscar_id(int name);
 struct elemento{
     int id;
     string prod;
+    string resurtir;
     double pc;
     double pv;
     int existencias;
@@ -101,8 +102,10 @@ struct atributos_cuentas{
 };
 
 elemento inventario[100];
+elemento resurtirA[100];
 atributos_cuentas lsA[100];
 atributos_cuentas lsV[100];
+
 
 int main (){
     
@@ -301,14 +304,14 @@ void Modificaciones(){
 }
 
 void Mostrar_inventario(){
-    
-     int i;
+    Resurtir();
+    int i;
     
     cout<<"                              "<<"Mostrar Inventario"<<endl;
-    cout<<left<<setw(8)<<"Id"<<setw(16)<<"Producto"<<setw(10)<<"PC"<<setw(10)<<"PV"<<setw(13)<<"Existencias"<<setw(25)<<"Nivel de reorden"<<setw(10)<<endl;
+    cout<<left<<setw(8)<<"Id"<<setw(16)<<"Producto"<<setw(10)<<"PC"<<setw(10)<<"PV"<<setw(13)<<"Existencias"<<setw(25)<<"Nivel de reorden"<<setw(10)<<" "<<endl;
     for(i=0;i<Ntotal;i++)
         if(inventario[i].st==1)
-           cout<<left<<setw(8)<<inventario[i].id<<setw(16)<<inventario[i].prod<<setw(10)<<inventario[i].pc<<setw(10)<<inventario[i].pv<<setw(13)<<inventario[i].existencias<<setw(25)<<inventario[i].nr<<"\n";
+           cout<<left<<setw(8)<<inventario[i].id<<setw(16)<<inventario[i].prod<<setw(10)<<inventario[i].pc<<setw(10)<<inventario[i].pv<<setw(13)<<inventario[i].existencias<<setw(25)<<inventario[i].nr<<resurtirA[i].resurtir<<"\n";
 }
 
 void Por_id(){ // esto me falta pasarlo a arreglo y hacer la burbuja
@@ -414,14 +417,14 @@ void Por_producto(){ // esto me falta pasarlo a arreglo y hacer la burbuja
             cout<<left<<setw(8)<<id[i]<<setw(16)<<nombre[i]<<setw(10)<<pc[i]<<setw(10)<<pv[i]<<setw(13)<<existencias[i]<<setw(25)<<nr[i]<<resurtirC[i]<<"\n";
 }
 
-void Resurtir(){ // esto me falta pasarlo a arreglo
+void Resurtir(){
     
     int i=0;
     string simbolo="*";
     
     for(i=0;i<total;i++)
-        resurtirC[i]=(existencias[i]<nr[i]);
-    resurtirC[i]=simbolo;
+        resurtirA[i].resurtir=(inventario[i].existencias<inventario[i].nr);
+    resurtirA[i].resurtir=simbolo;
 }
    
 void Administracion_de_cuentas(){
