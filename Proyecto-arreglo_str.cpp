@@ -255,20 +255,22 @@ void Bajas(){
 
 void Consultas(){
     
+    Resurtir();
+    
     int indice;
     string nombre_temp;
     
     while(true){
     cout<<"Producto: ";
     cin>>nombre_temp;
-    if(nombre_temp=="*") //resurtir
+    if(nombre_temp=="*") 
         break;
     indice=Buscar(nombre_temp);
     if(indice==-1 || inventario[indice].st==0)
         cout<<"No encontrado"<<endl;
     else{
         cout<<left<<setw(8)<<"Id"<<setw(16)<<"Producto"<<setw(10)<<"PC"<<setw(10)<<"PV"<<setw(13)<<"Existencias"<<setw(25)<<"Nivel de reorden"<<endl;
-        cout<<left<<setw(8)<<inventario[indice].id<<setw(16)<<inventario[indice].prod<<setw(10)<<inventario[indice].pc<<setw(10)<<inventario[indice].pv<<setw(13)<<inventario[indice].existencias<<setw(25)<<inventario[indice].nr<<"\n";
+        cout<<left<<setw(8)<<inventario[indice].id<<setw(16)<<inventario[indice].prod<<setw(10)<<inventario[indice].pc<<setw(10)<<inventario[indice].pv<<setw(13)<<inventario[indice].existencias<<setw(25)<<inventario[indice].nr<<" "<<resurtirA[indice].resurtir<<"\n";
     }
     }
 } 
